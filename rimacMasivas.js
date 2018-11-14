@@ -8,10 +8,11 @@ const listaSuscripciones = [];
 // ruta - La ruta a donde se va a hacer la petición e.g: "https://abc.culqi.com/refunds"
 // data - el cuerpo de la peticion eg.: "{'amount':1500, ...}"
 // header - el header de Autorización para cada petición e.g.: "Bearer sk_live198719239"
-fs.createReadStream('ANULACION-RIMAC-14-NOV.csv')
+fs.createReadStream('sxs_rimac.csv')
     .pipe(csv())
     .on('data', async data => {
         try {
+            //console.log(data.sxs_rimac);
             listaSuscripciones.push(data.sxs_rimac);
         }
         catch (err) {
@@ -21,9 +22,10 @@ fs.createReadStream('ANULACION-RIMAC-14-NOV.csv')
     })
     .on('end', () => {
         console.log('finished converting to list');
+        console.log(listaSuscripciones);
     });
 
-const url = 'https://pago.culqi.com/api/rimac/suscripciones';
+//const url = 'https://pago.culqi.com/api/rimac/suscripciones';
 const body = JSON.stringify(listaSuscripciones);
 const header = {
     'Content-type': 'application/json',
@@ -36,13 +38,13 @@ const request = {
     headers: header
 }
 
-const result = fetch(url, request);
+/*const result = fetch(url, request);
 result.then(x => {
     json = result.json()
     json.then(y => {
         console.log(result.status);
         console.log(json);
     });
-})
+})*/
 
 
