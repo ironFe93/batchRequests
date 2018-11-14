@@ -7,8 +7,14 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Iniciar programa",
+            "name": "script devoluciones",
             "program": "${workspaceFolder}/script.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "script cancelación de suscripciones masiva rimac",
+            "program": "${workspaceFolder}/rimacMasivas.js"
         }
     ]
 }
